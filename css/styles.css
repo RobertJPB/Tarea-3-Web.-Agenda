@@ -1,14 +1,15 @@
 :root {
     --primary: #2563eb;
-    --bg: #f1f5f9;
+    --bg: #f8fafc;
     --card: #ffffff;
-    --text: #1e293b;
-    --border: #cbd5e1;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
     --success: #22c55e;
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--bg);
     color: var(--text);
     margin: 0;
@@ -19,102 +20,99 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px; /* Ancho suficiente para evitar la inclinación */
+    margin: 0 auto;
 }
 
 h1 {
     text-align: center;
-    font-weight: 800;
+    font-size: 2rem;
     margin-bottom: 30px;
 }
 
 .formulario {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
+    display: flex;
     background: var(--card);
-    padding: 6px;
+    padding: 5px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border);
-    margin-bottom: 50px;
-}
-
-.formulario input {
-    border: none;
-    border-right: 1px solid var(--border);
-    padding: 14px;
-    font-size: 1rem;
-    outline: none;
+    margin-bottom: 40px;
     width: 100%;
     box-sizing: border-box;
 }
 
-.formulario input:last-of-type {
-    border-right: none;
+.formulario input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    outline: none;
+    min-width: 0; /* Evita que el input empuje el diseño hacia la derecha */
+}
+
+.formulario input:not(:last-child) {
+    border-right: 1px solid var(--border);
 }
 
 .formulario button {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 0 30px;
+    padding: 0 25px;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
-    height: 100%;
-}
-
-.formulario button:hover {
-    background: #1d4ed8;
+    margin-left: 5px;
 }
 
 .lista {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
 }
 
 .contacto-card {
     background: var(--card);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid var(--border);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .contacto-card h4 {
     margin: 0 0 5px 0;
-    font-size: 1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    color: var(--text);
 }
 
 .contacto-card p {
     margin: 0;
-    font-size: 0.85rem;
-    color: #64748b;
+    font-size: 0.9rem;
+    color: var(--muted);
     display: flex;
     align-items: center;
 }
 
 .phone-icon {
     color: var(--success);
-    margin-right: 6px;
+    margin-right: 8px;
     font-weight: bold;
 }
 
-@media (max-width: 1100px) {
-    .lista { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 800px) {
-    .formulario { grid-template-columns: 1fr; gap: 5px; padding: 10px; }
-    .formulario input { border-right: none; border-bottom: 1px solid var(--border); }
-    .lista { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 480px) {
-    .lista { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+    .formulario {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .formulario input {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 15px;
+    }
+    .formulario button {
+        margin: 10px 0 0 0;
+        padding: 15px;
+    }
 }
